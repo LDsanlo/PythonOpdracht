@@ -1,5 +1,6 @@
 import os
 import sqlite3
+from datetime import datetime
 
 class Database:
     def __init__(self):
@@ -59,10 +60,11 @@ class Database:
             print(f"Error executing query: {e}")
             return []
 
-    def insert_row(self, date, amount, description):
+    def insert_row(self, amount, description):
         try:
             table_name = "transaction_history"
             columns = "Date, Amount, Description"
+            date = datetime.now().strftime("%H:%M:%S")
             values = (date, amount, description)
 
             query = f"INSERT INTO {table_name} ({columns}) VALUES ({','.join(['?' for _ in values])})"
