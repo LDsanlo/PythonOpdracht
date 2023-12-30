@@ -20,3 +20,4 @@ GEBRUIKSAANWIJZINGEN
 - typ "help" om een lijst te krijgen van alle mogelijke commando's met daarbij hun functionaliteiten. Deze lijst wordt ook onderaan de  README vermeld.
 - 
 
+test
