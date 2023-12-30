@@ -10,12 +10,13 @@ Deze package is ontwikkeld om al je geldzaken bij te houden en verschillende sta
 - Geef ik meer uit dan dat ik binnenkrijg?
 - Waar liggen mijn grootste kosten?
 - Is het mogelijk een stappenplan te krijgen om over een bepaalde duur besparingen te doen om een bepaald bedrag te behalen?
+- ... (zie help commando)
 
-Deze functionaliteiten zijn o.a. aanwezig in de package. Adhv. een database worden entries bijgehouden en op basis daarvan statistieken opgesteld.
+Adhv. een database worden entries bijgehouden en op basis daarvan statistieken opgesteld. Natuurlijk is het mogelijk meerdere databases aan te maken indien gewensd, zodat ook je vrienden en familie hier gebruik van kunnen maken. Beveiliging van de databases wordt hier niet toegepast.
 
 GEBRUIKSAANWIJZINGEN
 
-- main.py importeert alle nodige modules en klassen om de functionaliteiten uit te kunnen voeren.
+- main.py importeert alle nodige modules en klassen om de functionaliteiten uit te kunnen voeren. Voer deze uit om te beginnen.
 - typ "help" om een lijst te krijgen van alle mogelijke commando's met daarbij hun functionaliteiten. Deze lijst wordt ook onderaan de  README vermeld.
 - 
 
