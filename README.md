@@ -28,4 +28,4 @@ Type "help" to get a list of all possible commands along with their functionalit
 Note:   a requirement.txt has been created for both inside and outside venv. requirements2.txt was generated outside the venv space.
         These files can be found in 'textFiles' 
 
-BELANGRIJK: Github wil maar niet de map database toevoegen, wat ik ook probeer. Indien de map 'database' niet zichtbaar is onder scr, gelieve dit dan nog aan te maken, hierin moet de verkregen database inkomen.
+BELANGRIJK: Github wil maar niet de mappen database en exportedfiles toevoegen omdat ze leeg zijn. Ik heb hierin testfiles gezet zodat ze bij de cloning meegecloned zouden worden
