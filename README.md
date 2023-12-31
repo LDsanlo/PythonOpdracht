@@ -15,6 +15,12 @@ Deze package is ontwikkeld om al je geldzaken bij te houden en verschillende sta
 
 GEBRUIKSAANWIJZINGEN
 
+- Zet uw verkregen database in de map 'database'. Als deze mist of niet gelezen kan worden wordt een nieuwe aangemaakt.
 - main.py importeert alle nodige modules en klassen om de functionaliteiten uit te kunnen voeren. Voer deze uit om te beginnen.
 - typ "help" om een lijst te krijgen van alle mogelijke commando's met daarbij hun functionaliteiten.
-- 
+
+todo
+methodes balans positief/negatief afgelopen: dag, week, maand, jaar
+gemiddelde uitgave volgens dag
+--> plan maken op basis van gemiddelde uitgave (meegeven in hoeveel dagen je dit wenst, indien niet mogelijk, min duur meegeven = besparing volgens dag = gemiddelde uitgave volgens dag)
+--> logistiek wel nog checken, kan fout zijn, indien dat geval dit idee schrappen; is extra

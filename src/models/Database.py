@@ -14,6 +14,8 @@ class Database:
         self.connection = None
         self.cursor = None
         self.connect()
+        balance = self.calculate_balance()
+        
 
     def connect(self):
         try:
@@ -64,7 +66,7 @@ class Database:
         try:
             table_name = "transaction_history"
             columns = "Date, Amount, Description"
-            date = datetime.now().strftime("%H:%M:%S")
+            date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             values = (date, amount, description)
 
             query = f"INSERT INTO {table_name} ({columns}) VALUES ({','.join(['?' for _ in values])})"
@@ -98,3 +100,15 @@ class Database:
         except sqlite3.Error as e:
             print(f"Error deleting last row: {e}")
 
+
+    def calculate_balance(self):
+        try:
+            query = "SELECT Amount FROM transaction_history;"
+            result = self.execute_query(query)
+
+            second_row_sum = sum(row[0] for row in result)
+            return second_row_sum
+        
+        except sqlite3.Error as e:
+            print(f"Error calculating sum of the second row: {e}")
+            return None

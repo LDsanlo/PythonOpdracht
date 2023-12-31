@@ -1,4 +1,6 @@
 from models.Database import Database
+from reports.export import export_to_csv
+from reports.export import export_to_xlsx
 
 def main():
 
@@ -25,6 +27,17 @@ def main():
 
         elif input_user == 'printdatabase':
             db.read_all_rows()
+
+        elif input_user == 'calculatebalance':
+            print(db.calculate_balance())
+
+        elif input_user == 'csv':
+            name = input('Name of the csv file:')
+            export_to_csv(name)
+
+        elif input_user == 'xlsx':
+            name = input('Name of the xlsx file:')
+            export_to_xlsx(name)
 
 
 if __name__ == "__main__":
