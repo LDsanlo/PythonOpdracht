@@ -1,5 +1,7 @@
 import os
 import sqlite3
+import random
+from datetime import datetime, timedelta
 from datetime import datetime
 
 class Database:
@@ -16,7 +18,6 @@ class Database:
         self.connect()
         balance = self.calculate_balance()
         
-
     def connect(self):
         try:
             #kijk of de database aanwezig is in de map 'database', zoniet, maak een nieuwe aan
@@ -25,10 +26,8 @@ class Database:
 
             self.connection = sqlite3.connect(self.path)
             self.cursor = self.connection.cursor()
-            print(f"Connected to the database at {self.path}")
         except sqlite3.Error as e:
             print(f"Error connecting to the database: {e}")
-
 
     def create_database(self):
         try:
@@ -54,10 +53,12 @@ class Database:
         try:
             if params:
                 self.cursor.execute(query, params)
+            
             else:
                 self.cursor.execute(query)
             result = self.cursor.fetchall()
             return result
+
         except sqlite3.Error as e:
             print(f"Error executing query: {e}")
             return []
@@ -73,22 +74,9 @@ class Database:
             self.cursor.execute(query, values)
             self.connection.commit()
             print("Row inserted successfully")
+
         except sqlite3.Error as e:
             print(f"Error inserting row: {e}")
-
-    def read_all_rows(self):
-        try:
-            query = "SELECT * FROM transaction_history;"
-            result = self.execute_query(query)
-            
-            if result:
-                for row in result:
-                    print(row)
-            else:
-                print("No rows found in the database.")
-
-        except sqlite3.Error as e:
-            print(f"Error reading rows from the database: {e}")
 
     def delete_last_row(self):
         try:
@@ -100,15 +88,40 @@ class Database:
         except sqlite3.Error as e:
             print(f"Error deleting last row: {e}")
 
-
     def calculate_balance(self):
         try:
             query = "SELECT Amount FROM transaction_history;"
             result = self.execute_query(query)
 
-            second_row_sum = sum(row[0] for row in result)
-            return second_row_sum
+            numeric_values = [float(row[0]) for row in result if row[0] is not None]
+            second_row_sum = sum(numeric_values)
+
+            return round(second_row_sum,2)
         
         except sqlite3.Error as e:
             print(f"Error calculating sum of the second row: {e}")
             return None
+
+# code for making a new realistic database, to use this, give insert_row the parameter 'date' and put the date line (69) in #
+    def populate_data(self):
+        for _ in range(440):
+            date = self.generate_random_date()
+            amount = self.generate_random_amount()
+            self.insert_row(date, amount, "Expense")
+
+        current_date = datetime.now()
+
+        for _ in range(52):
+            date = current_date.strftime("%Y-%m-%d %H:%M:%S")
+            self.insert_row(date, 60, "Income")
+            current_date -= timedelta(weeks=1)
+
+    def generate_random_date(self):
+        current_date = datetime.now()
+        random_days = random.randint(1, 365)
+        new_date = current_date - timedelta(days=random_days)
+
+        return new_date.strftime("%Y-%m-%d %H:%M:%S")
+
+    def generate_random_amount(self):
+        return random.uniform(-5, -20)

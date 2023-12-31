@@ -1,4 +1,0 @@
-q
-help
-addcost
-readdatabase

@@ -5,11 +5,8 @@ import string
 from pathlib import Path
 from models.Database import Database
 
-
-
 def export_to_csv(output_file):
-
-
+    # give extension if not given
     normalized_filename = normalize_filename(output_file)
     normalized_filename = re.sub(r'\.csv$', '', normalized_filename) + '.csv'
 
@@ -17,7 +14,7 @@ def export_to_csv(output_file):
     exported_reports_path = current_script_path.parent / "exportedReports"
     output_path = exported_reports_path / normalized_filename
         
-     # copy database
+    # copy database
     try:
         db = Database()
         rows = db.execute_query("SELECT * FROM transaction_history;")
@@ -29,14 +26,14 @@ def export_to_csv(output_file):
             csv_writer.writerow(header)
             csv_writer.writerows(rows)
 
-            print(f"Gegevens succesvol geëxporteerd naar {output_path}")
+            print(f"File exported to {output_path}")
 
     except Exception as e:
         print(f"Database empty or not found: {e}")
     
 
 def export_to_xlsx(output_file):
-
+    # give extension if not given
     normalized_filename = normalize_filename(output_file)
     normalized_filename = re.sub(r'\.xlsx$', '', normalized_filename) + '.xlsx'
 
@@ -45,7 +42,6 @@ def export_to_xlsx(output_file):
     output_path = exported_reports_path / normalized_filename
         
      # copy database
-    
     try:
         db = Database()
         rows = db.execute_query("SELECT * FROM transaction_history;")
@@ -61,7 +57,7 @@ def export_to_xlsx(output_file):
 
         workbook.save(output_path)
 
-        print(f"Gegevens succesvol geëxporteerd naar {output_path}")
+        print(f"File exported to {output_path}")
 
     except Exception as e:
         print(f"Database leeg of niet gevonden: {e}")

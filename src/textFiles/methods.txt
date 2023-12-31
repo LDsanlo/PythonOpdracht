@@ -1,0 +1,10 @@
+q               | Quit to terminal
+help            | give list with commands
+addcost         | Add an entry to your database. Give the amount (negative for cost, positive for income) and description of the entry
+dellast         | Delete the last made entry
+calcbal         | Calculate your balance. When initialising a new database, add your starting balance using 'addcost' once
+csv             | Export your database to a .csv file  } Exported files may be found in reports\exportedReports
+xlsx            | Export your database to a .xlsx file }
+avgexp          | Calculate your average expense sorted by day. Give the time period from which you want to calculate, options are:
+                | 'day', 'week', 'month', 'year'
+avgnet          | Calculate your average pos/neg net outcome for the given time period, options are: 'day', 'week', 'month', 'year'
